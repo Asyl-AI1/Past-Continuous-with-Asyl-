@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF--8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Continuous with Asyl🤍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Playful Peach and Lavender -->
+    <!-- Application Structure Plan: A single-page, scrollable application that mirrors the educational flow of the worksheet. It starts with explanations presented in interactive cards, followed by a dedicated "Practice Zone" where each task from the worksheet is converted into an interactive quiz with instant feedback. This structure was chosen to transform passive learning into an active, engaging experience. The immediate feedback mechanism reinforces learning concepts more effectively than a static document, helping the user self-correct and learn faster. -->
+    <!-- Visualization & Content Choices: Report Info -> Grammar Rules & Exercises. Goal -> Teach and Test understanding. Viz/Presentation Method -> Interactive cards for explanations, and HTML form elements (inputs, buttons) for exercises. Interaction -> Users click to reveal info and type/select answers to get immediate feedback (correct/incorrect styling). Justification -> This interactive approach increases engagement and improves knowledge retention for a young learner. Library/Method -> Vanilla JS for interactivity. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        .task-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .correct-answer {
+            border-color: #22c55e; /* green-500 */
+        }
+        .incorrect-answer {
+            border-color: #ef4444; /* red-500 */
+        }
+        .btn-primary {
+            background-color: #8b5cf6; /* violet-500 */
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #7c3aed; /* violet-600 */
+        }
+        .btn-secondary {
+            background-color: #fb923c; /* orange-400 */
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #f97316; /* orange-500 */
+        }
+    </style>
+</head>
+<body class="bg-violet-50 text-gray-800">
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-violet-800">Past Continuous with Asyl🤍</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Hi Asyl! Get ready to level up your English! This is perfect for talking about all the amazing things you were doing, like playing volleyball 🏐, studying well ✨, or dreaming about Italy ✈️!</p>
+        </header>
+
+        <section id="explanation" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-violet-700">💡 What is the Past Continuous?</h2>
+            <p class="text-center text-lg mb-8 max-w-2xl mx-auto">We use the Past Continuous to talk about actions that were **in progress** (happening) in the past. Think of it as a snapshot of an action that hadn't finished yet!</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg task-card">
+                    <h3 class="font-bold text-xl mb-3 text-orange-500">1. At a Specific Time</h3>
+                    <p>An action happening at a *precise moment* in the past.</p>
+                    <p class="mt-4 font-mono bg-orange-50 p-3 rounded-lg text-orange-800">I <strong class="font-bold">was playing</strong> volleyball 🏐 yesterday at 6 p.m.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg task-card">
+                    <h3 class="font-bold text-xl mb-3 text-lime-500">2. Interrupted Action</h3>
+                    <p>A longer action interrupted by a shorter one. We often use <strong class="font-bold">when</strong>.</p>
+                    <p class="mt-4 font-mono bg-lime-50 p-3 rounded-lg text-lime-800">She <strong class="font-bold">was listening</strong> to Adele 🎶 when I called her.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg task-card">
+                    <h3 class="font-bold text-xl mb-3 text-sky-500">3. Two Actions Together</h3>
+                    <p>Two actions happening at the same time. We often use <strong class="font-bold">while</strong>.</p>
+                    <p class="mt-4 font-mono bg-sky-50 p-3 rounded-lg text-sky-800">I <strong class="font-bold">was dreaming</strong> about Italy ✈️ while my mom was cooking.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="rules" class="mb-16 bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-violet-700">✍️ Grammar Rules</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-violet-100">
+                            <th class="p-4 rounded-tl-lg">Type</th>
+                            <th class="p-4">Structure</th>
+                            <th class="p-4 rounded-tr-lg">Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-violet-100">
+                            <td class="p-4 font-bold">Positive (+)</td>
+                            <td class="p-4 font-mono">Subject + was/were + V-ing</td>
+                            <td class="p-4">We <strong class="text-violet-600">were watching</strong> a drama 📺 last night.</td>
+                        </tr>
+                        <tr class="border-b border-violet-100">
+                            <td class="p-4 font-bold">Negative (-)</td>
+                            <td class="p-4 font-mono">Subject + was/were + not + V-ing</td>
+                            <td class="p-4">I <strong class="text-violet-600">wasn't practicing</strong> volleyball at 7.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">Question (?)</td>
+                            <td class="p-4 font-mono">Was/Were + Subject + V-ing?</td>
+                            <td class="p-4"><strong class="text-violet-600">Were</strong> you <strong class="text-violet-600">studying</strong> Math at 9 a.m.? ✨</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="practice" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-violet-700">✏️ Practice Zone (Time to Score!)</h2>
+
+            <div class="space-y-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg task-card">
+                    <h3 class="text-2xl font-bold mb-4">Task 1: Fill in the Blanks</h3>
+                    <div class="space-y-4" id="task1-container">
+                        <p>1. Asyl and her teammates <input type="text" data-answer="were practicing" class="border-b-2 p-1 mx-2 focus:outline-none focus:border-violet-500"> (practice) hard for the volleyball 🏐 tournament this morning.</p>
+                        <p>2. I <input type="text" data-answer="wasn't studying" class="border-b-2 p-1 mx-2 focus:outline-none focus:border-violet-500"> (not / study) history at 5 p.m.; I was scrolling through travel videos of Florence ✈️.</p>
+                        <p>3. <input type="text" data-answer="Was" class="border-b-2 p-1 w-16 mx-2 focus:outline-none focus:border-violet-500"> your friend <input type="text" data-answer="watching" class="border-b-2 p-1 mx-2 focus:outline-none focus:border-violet-500"> (watch) that new K-drama 📺 when the internet stopped?</p>
+                        <p>4. While my sister <input type="text" data-answer="was singing" class="border-b-2 p-1 mx-2 focus:outline-none focus:border-violet-500"> (sing) along to Adele 🎶, I <input type="text" data-answer="was writing" class="border-b-2 p-1 mx-2 focus:outline-none focus:border-violet-500"> (write) a brilliant essay.</p>
+                    </div>
+                    <button id="checkTask1" class="btn-primary font-bold py-2 px-6 rounded-lg mt-6">Check Answers</button>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg task-card">
+                    <h3 class="text-2xl font-bold mb-4">Task 2: Choose the Champion!</h3>
+                    <div class="space-y-4" id="task2-container">
+                        <div class="flex items-center space-x-4">
+                            <p>1. They </p>
+                            <button data-correct="false" class="bg-gray-200 py-1 px-3 rounded-lg">was</button>
+                            <button data-correct="true" class="bg-gray-200 py-1 px-3 rounded-lg">were</button>
+                            <p> cheering for the national team.</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                             <p>2. She </p>
+                            <button data-correct="true" class="bg-gray-200 py-1 px-3 rounded-lg">was reading</button>
+                            <button data-correct="false" class="bg-gray-200 py-1 px-3 rounded-lg">read</button>
+                             <p> a book when the alarm clock rang.</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                             <p>3. We </p>
+                            <button data-correct="false" class="bg-gray-200 py-1 px-3 rounded-lg">wasn't</button>
+                            <button data-correct="true" class="bg-gray-200 py-1 px-3 rounded-lg">weren't</button>
+                             <p> playing outside because it was raining.</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button data-correct="true" class="bg-gray-200 py-1 px-3 rounded-lg">Were</button>
+                             <p> you </p>
+                            <button data-correct="false" class="bg-gray-200 py-1 px-3 rounded-lg">watch</button>
+                            <button data-correct="true" class="bg-gray-200 py-1 px-3 rounded-lg">watching</button>
+                             <p> that movie last night?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg task-card">
+                    <h3 class="text-2xl font-bold mb-4">Task 3: Correct the Mistakes</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-gray-500">1. He were running very fast at the moment of the injury.</p>
+                            <input type="text" class="mt-1 w-full border-2 p-2 rounded-lg focus:outline-none focus:border-violet-500" placeholder="Type the correct sentence...">
+                            <p class="text-green-600 mt-1 hidden">Correct answer: He <strong class="font-bold">was running</strong> very fast at the moment of the injury.</p>
+                        </div>
+                         <div>
+                            <p class="text-gray-500">2. I was dreams about visiting the Colosseum in Italy ✈️.</p>
+                            <input type="text" class="mt-1 w-full border-2 p-2 rounded-lg focus:outline-none focus:border-violet-500" placeholder="Type the correct sentence...">
+                            <p class="text-green-600 mt-1 hidden">Correct answer: I <strong class="font-bold">was dreaming</strong> about visiting the Colosseum in Italy.</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500">3. My parents was talking while I was finishing my homework ✨.</p>
+                            <input type="text" class="mt-1 w-full border-2 p-2 rounded-lg focus:outline-none focus:border-violet-500" placeholder="Type the correct sentence...">
+                            <p class="text-green-600 mt-1 hidden">Correct answer: My parents <strong class="font-bold">were talking</strong> while I was finishing my homework.</p>
+                        </div>
+                    </div>
+                     <button id="checkTask3" class="btn-primary font-bold py-2 px-6 rounded-lg mt-6">Show Answers</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="creative-tasks" class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-lg task-card">
+                 <h2 class="text-3xl font-bold text-center mb-8 text-violet-700">🎤 Let's Talk!</h2>
+                 <p class="text-center mb-6">Find a partner and take turns asking and answering these questions. Remember to use the Past Continuous!</p>
+                 <ul class="list-disc list-inside space-y-3 text-lg">
+                    <li>What <strong class="text-orange-500">were you doing</strong> when the phone rang?</li>
+                    <li>What <strong class="text-orange-500">were your parents doing</strong> when you got home?</li>
+                    <li>What <strong class="text-orange-500">was your teacher doing</strong> when you walked into class?</li>
+                    <li>What <strong class="text-orange-500">was the volleyball team doing</strong> when the coach walked in?</li>
+                 </ul>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg task-card">
+                <h2 class="text-3xl font-bold text-center mb-8 text-violet-700">📝 Story Time!</h2>
+                <p class="mb-4">Write a short story (5–6 sentences) starting with the sentence below. Describe several actions happening at once!</p>
+                <p class="italic mb-4"><strong>Yesterday at 7 p.m., I was…</strong></p>
+                <textarea class="w-full h-48 border-2 p-3 rounded-lg focus:outline-none focus:border-violet-500" placeholder="...listening to music while my brother was playing a game..."></textarea>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkTask1Btn = document.getElementById('checkTask1');
+            checkTask1Btn.addEventListener('click', () => {
+                const inputs = document.querySelectorAll('#task1-container input');
+                inputs.forEach(input => {
+                    const userAnswer = input.value.trim().toLowerCase().replace(/'/g, "");
+                    const correctAnswer = input.dataset.answer.toLowerCase().replace(/'/g, "");
+                    input.classList.remove('correct-answer', 'incorrect-answer');
+                    if (userAnswer === correctAnswer) {
+                        input.classList.add('correct-answer');
+                    } else {
+                        input.classList.add('incorrect-answer');
+                    }
+                });
+            });
+            
+            const task2Container = document.getElementById('task2-container');
+            const task2ButtonGroups = task2Container.querySelectorAll('div');
+
+            task2ButtonGroups.forEach(group => {
+                const buttons = group.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        buttons.forEach(btn => {
+                           btn.classList.remove('bg-green-500', 'bg-red-500', 'text-white');
+                           btn.classList.add('bg-gray-200');
+                        });
+
+                        const isCorrect = button.dataset.correct === 'true';
+                        if(isCorrect) {
+                            button.classList.remove('bg-gray-200');
+                            button.classList.add('bg-green-500', 'text-white');
+                        } else {
+                            button.classList.remove('bg-gray-200');
+                            button.classList.add('bg-red-500', 'text-white');
+                        }
+                    });
+                });
+            });
+
+            const checkTask3Btn = document.getElementById('checkTask3');
+            checkTask3Btn.addEventListener('click', () => {
+                const answers = document.querySelectorAll('#practice .space-y-6 .text-green-600');
+                answers.forEach(answer => {
+                    answer.classList.toggle('hidden');
+                });
+                if (checkTask3Btn.textContent === 'Show Answers') {
+                    checkTask3Btn.textContent = 'Hide Answers';
+                    checkTask3Btn.classList.remove('btn-primary');
+                    checkTask3Btn.classList.add('btn-secondary');
+                } else {
+                    checkTask3Btn.textContent = 'Show Answers';
+                    checkTask3Btn.classList.remove('btn-secondary');
+                    checkTask3Btn.classList.add('btn-primary');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
